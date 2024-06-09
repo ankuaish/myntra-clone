@@ -3,7 +3,7 @@ import { Header } from "./components/Header";
 import { HomeItem } from "./components/HomeItem";
 
 function App() {
-  const items = {
+  const item = {
     id: "001",
     image: "images/1.jpg",
     company: "Carlton London",
@@ -24,7 +24,7 @@ function App() {
       <Header />
       <main>
         <div className="items-container">
-          <HomeItem item={items} />
+          <HomeItem item={item} />
         </div>
       </main>
       <Footer />

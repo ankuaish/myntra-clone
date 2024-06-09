@@ -1,3 +1,7 @@
+import { IoPerson } from "react-icons/io5";
+import { FaHeart } from "react-icons/fa";
+import { IoBagHandleSharp } from "react-icons/io5";
+import { FaSearch } from "react-icons/fa";
 export const Header = () => {
   return (
     <>
@@ -22,7 +26,9 @@ export const Header = () => {
           </a>
         </nav>
         <div className="search_bar">
-          <span className="material-symbols-outlined search_icon">search</span>
+          <span className="material-symbols-outlined search_icon">
+            <FaSearch />
+          </span>
           <input
             className="search_input"
             placeholder="Search for products, brands and more"
@@ -30,23 +36,17 @@ export const Header = () => {
         </div>
         <div className="action_bar">
           <div className="action_container">
-            <span className="material-symbols-outlined action_icon">
-              person
-            </span>
+            <IoPerson />
             <span className="action_name">Profile</span>
           </div>
 
           <div className="action_container">
-            <span className="material-symbols-outlined action_icon">
-              favorite
-            </span>
+            <FaHeart />
             <span className="action_name">Wishlist</span>
           </div>
 
           <a className="action_container" href="pages/bag.html">
-            <span className="material-symbols-outlined action_icon">
-              shopping_bag
-            </span>
+            <IoBagHandleSharp />
             <span className="action_name">Bag</span>
             <span className="bag-item-count">0</span>
           </a>
