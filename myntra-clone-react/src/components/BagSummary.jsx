@@ -1,25 +1,37 @@
+import { useSelector } from "react-redux";
 export const BagSummary = () => {
-  const bagSummary = {
-    totalItem: 3,
-    totalMRP: 100,
-    totalDiscount: 10,
-    finalPayment: 90,
-  };
+  const bagItemsID = useSelector((store) => store.bag);
+  const items = useSelector((store) => store.items);
+  const elementGet = items.filter((item) => {
+    const itemIndex = bagItemsID.indexOf(item.id);
+    return itemIndex >= 0;
+  });
+
+  const CONVENIENCE_FEES = 99;
+  let totalItem = bagItemsID.length;
+  let totalMRP = 0;
+  let totalDiscount = 0;
+
+  elementGet.forEach((bagItem) => {
+    totalMRP += bagItem.original_price;
+    totalDiscount += bagItem.original_price - bagItem.current_price;
+  });
+
+  let finalPayment = totalMRP - totalDiscount + CONVENIENCE_FEES;
+
   return (
     <>
       <div className="bag-summary">
         <div className="bag-details-container">
-          <div className="price-header">
-            PRICE DETAILS ({bagSummary.totalItem} Items){" "}
-          </div>
+          <div className="price-header">PRICE DETAILS ({totalItem} Items) </div>
           <div className="price-item">
             <span className="price-item-tag">Total MRP</span>
-            <span className="price-item-value">₹{bagSummary.totalMRP}</span>
+            <span className="price-item-value">₹{totalMRP}</span>
           </div>
           <div className="price-item">
             <span className="price-item-tag">Discount on MRP</span>
             <span className="price-item-value priceDetail-base-discount">
-              -₹{bagSummary.totalDiscount}
+              -₹{totalDiscount}
             </span>
           </div>
           <div className="price-item">
@@ -29,7 +41,7 @@ export const BagSummary = () => {
           <hr />
           <div className="price-footer">
             <span className="price-item-tag">Total Amount</span>
-            <span className="price-item-value">₹{bagSummary.finalPayment}</span>
+            <span className="price-item-value">₹{finalPayment}</span>
           </div>
         </div>
         <button className="btn-place-order">

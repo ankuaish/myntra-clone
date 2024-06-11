@@ -3,7 +3,9 @@ import { FaHeart } from "react-icons/fa";
 import { IoBagHandleSharp } from "react-icons/io5";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 export const Header = () => {
+  const bag = useSelector((store) => store.bag);
   return (
     <>
       <header>
@@ -49,7 +51,7 @@ export const Header = () => {
           <Link className="action_container" to="/bag">
             <IoBagHandleSharp />
             <span className="action_name">Bag</span>
-            <span className="bag-item-count">0</span>
+            <span className="bag-item-count">{bag.length}</span>
           </Link>
         </div>
       </header>
