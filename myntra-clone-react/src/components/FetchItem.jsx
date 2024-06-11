@@ -17,7 +17,7 @@ export const FetchItem = () => {
       .then(({ items }) => {
         dispatch(fetchStatusActions.markFetchDone());
         dispatch(fetchStatusActions.markFetchFinished());
-        dispatch(itemActions.addInitialItems(items));
+        dispatch(itemActions.addInitialItems(items[0]));
       });
     return () => {
       controller.abort();

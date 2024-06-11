@@ -4,7 +4,7 @@ export const itemsSlice = createSlice({
   name: "items",
   initialState: [],
   reducers: {
-    addInitialItems: (action) => {
+    addInitialItems: (state, action) => {
       return action.payload;
     },
   },
