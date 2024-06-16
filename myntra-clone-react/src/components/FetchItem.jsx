@@ -12,7 +12,7 @@ export const FetchItem = () => {
     const controller = new AbortController();
     const signal = controller.signal;
     dispatch(fetchStatusActions.markFetchStarted());
-    fetch("http://localhost:8080/items", { signal })
+    fetch("https://myntra-clone-ricz.onrender.com/items", { signal })
       .then((res) => res.json())
       .then(({ items }) => {
         dispatch(fetchStatusActions.markFetchDone());
